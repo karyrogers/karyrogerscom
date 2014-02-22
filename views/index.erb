@@ -1,0 +1,20 @@
+<ul class="cb-slideshow">
+  <% @ig_feed.keys.each do |img_file| %>
+    <li><span><%= img_file %></span><div><h3><%= @ig_feed[img_file]['caption'] %> <br /><img src="/images/heart.png"> <%= @ig_feed[img_file]['likes'] %> <img src="/images/comment.png"> <%= @ig_feed[img_file]['comments'] %></h3></div></li>
+  <% end %>
+</ul>
+<div class="container">
+	<div class="middle">
+	    <div class="content">
+		    <h1>Hi,</h1><h2>I'm Kary. This is my website</h2>
+		    <table><tr>
+		    <td align="center"><a class="svbtlelink" href="http://blog.karyrogers.com" title="svbtle"></a></td>
+	    	<td align="center"><a class="iglink" href="http://instagram.com/karyhead" title="instagram"></a></td>
+	    	<td align="center"><a class="twitterlink" href="http://twitter.com/karyhead" title="twitter"></a></td>
+	    	<td align="center"><a class="facebooklink" href="https://www.facebook.com/kary.rogers" title="facebook"></a></td>
+	    </tr></table>
+
+	    </div>
+    </div>
+</div>
+

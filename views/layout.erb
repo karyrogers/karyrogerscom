@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style type="text/css">
+    <!--
+    .cb-slideshow,
+    .cb-slideshow:after { 
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        z-index: 0; 
+    }
+    .cb-slideshow:after { 
+        content: '';
+        background: transparent url(../images/pattern.png) repeat top left;
+    }
+    <% pic_count = @ig_feed.keys.count %>
+	<% total_time = pic_count * 10.0 %>
+	.cb-slideshow li span { 
+	    width: 100%;
+	    height: 100%;
+	    position: absolute;
+	    top: 0px;
+	    left: 0px;
+	    color: transparent;
+	    background-size: cover;
+	    background-position: 50% 50%;
+	    background-repeat: none;
+	    opacity: 0;
+	    z-index: 0;
+		-webkit-backface-visibility: hidden;
+	    -webkit-animation: imageAnimation <%= total_time.to_i %>s linear infinite 0s;
+	    -moz-animation: imageAnimation <%= total_time.to_i  %>s linear infinite 0s;
+	    -o-animation: imageAnimation <%= total_time.to_i  %>s linear infinite 0s;
+	    -ms-animation: imageAnimation <%= total_time.to_i  %>s linear infinite 0s;
+	    animation: imageAnimation <%= total_time.to_i  %>s linear infinite 0s;
+	 }
+	 .cb-slideshow li div { 
+	    z-index: 1000;
+	    position: absolute;
+	    bottom: 10px;
+	    left: 0px;
+	    width: 100%;
+	    text-align: center;
+	    opacity: 0;
+	    color: #fff;
+	    -webkit-animation: titleAnimation <%= total_time.to_i %>s linear infinite 0s;
+	    -moz-animation: titleAnimation <%= total_time.to_i %>s linear infinite 0s;
+	    -o-animation: titleAnimation <%= total_time.to_i %>s linear infinite 0s;
+	    -ms-animation: titleAnimation <%= total_time.to_i %>s linear infinite 0s;
+	    animation: titleAnimation <%= total_time.to_i %>s linear infinite 0s; 
+	}
+	.cb-slideshow li div h3 { 
+	    font-family: 'Open Sans', 'Arial Narrow', Arial, sans-serif;
+	    font-size: 12px;
+	    font-weight: 600;
+	    padding-left: 40px; 
+	    bottom: 10px;
+	    text-align: left;
+	}
+	 <% count = 1 %>
+	 <% seconds = 0 %>
+	 <% @ig_feed.keys.each do |img_file| %>
+	   <% src = img_file.sub('public', '..') %>
+       <% if count == 1 %>
+	.cb-slideshow li:nth-child(1) span { 
+	    background-image: url(<%= src %>) 
+	}
+      <% else %>
+    .cb-slideshow li:nth-child(<%= count %>) span { 
+	    background-image: url(<%= src %>);
+	    -webkit-animation-delay: <%= seconds %>s;
+	    -moz-animation-delay: <%= seconds %>s;
+	    -o-animation-delay: <%= seconds %>s;
+	    -ms-animation-delay: <%= seconds %>s;
+	    animation-delay: <%= seconds %>s; 
+	}
+	.cb-slideshow li:nth-child(<%= count %>) div { 
+	    -webkit-animation-delay: <%= seconds %>s;
+	    -moz-animation-delay: <%= seconds %>s;
+	    -o-animation-delay: <%= seconds %>s;
+	    -ms-animation-delay: <%= seconds %>s;
+	    animation-delay: <%= seconds %>s; 
+	}
+	  <% end %>
+	  <% count += 1 %>
+	  <% seconds += 10 %>
+	<% end %>
+	
+	/* Animation for the slideshow images */
+    <% key_frame = (pic_count / total_time) * 100 %>
+    <% first_key_frame = key_frame / 2 %>
+	@-webkit-keyframes imageAnimation { 
+	    0% { opacity: 0;
+	    -webkit-animation-timing-function: ease-in; }
+	    <%= first_key_frame.to_i %>% { opacity: 1;
+	         -webkit-animation-timing-function: ease-out; }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    25% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	@-moz-keyframes imageAnimation { 
+	    0% { opacity: 0;
+	    -moz-animation-timing-function: ease-in; }
+	    <%= first_key_frame.to_i %>% { opacity: 1;
+	         -moz-animation-timing-function: ease-out; }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    25% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	@-o-keyframes imageAnimation { 
+	    0% { opacity: 0;
+	    -o-animation-timing-function: ease-in; }
+	    <%= first_key_frame.to_i %>% { opacity: 1;
+	         -o-animation-timing-function: ease-out; }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    25% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	@-ms-keyframes imageAnimation { 
+	    0% { opacity: 0;
+	    -ms-animation-timing-function: ease-in; }
+	    <%= first_key_frame.to_i %>% { opacity: 1;
+	         -ms-animation-timing-function: ease-out; }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    25% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	@keyframes imageAnimation { 
+	    0% { opacity: 0;
+	    animation-timing-function: ease-in; }
+	    <%= first_key_frame.to_i %>% { opacity: 1;
+	         animation-timing-function: ease-out; }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    25% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	/* Animation for the title */
+	@-webkit-keyframes titleAnimation { 
+	    0% { opacity: 0 }
+	    7% { opacity: 1 }
+	    9% { opacity: 1 }
+	    11% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	@-moz-keyframes titleAnimation { 
+	    0% { opacity: 0 }
+	    7% { opacity: 1 }
+	    9% { opacity: 1 }
+	    11% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	@-o-keyframes titleAnimation { 
+	    0% { opacity: 0 }
+	    7% { opacity: 1 }
+	    9% { opacity: 1 }
+	    11% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	@-ms-keyframes titleAnimation { 
+	    0% { opacity: 0 }
+	    7% { opacity: 1 }
+	    9% { opacity: 1 }
+	    11% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	@keyframes titleAnimation { 
+	    0% { opacity: 0 }
+	    7% { opacity: 1 }
+	    9% { opacity: 1 }
+	    11% { opacity: 0 }
+	    100% { opacity: 0 }
+	}
+	/* Show at least something when animations not supported */
+	.no-cssanimations .cb-slideshow li span{
+		opacity: 1;
+	}
+
+	@media screen and (max-width: 1136px) { 
+	    .cb-slideshow li div h3 { font-size: 8px }
+	}
+	@media screen and (max-width: 599px) { 
+		.cb-slideshow li div h1 { font-size: 24px }
+		.cb-slideshow li div h2 { font-size: 12px }
+	    .cb-slideshow li div h3 { font-size: 8px }
+
+	}
+    -->
+    </style>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <title>Kary Rogers</title>
+       <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <link href='http://fonts.googleapis.com/css?family=Lobster|Raleway|Open+Sans' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<script type="text/javascript">
+          $(document).ready(function(){
+            $(".container").animate({
+                     opacity: 1,
+                     height: "100%"
+                     }, 5000, "easeOutQuart");
+            });
+	    </script>
+    </head>
+    <body id="page">
+    	<%= yield %> 
+    </body>
+</html>

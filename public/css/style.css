@@ -1,0 +1,139 @@
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+html,body {
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+input{
+	border:1px solid #b0b0b0;
+	padding:3px 5px 4px;
+	color:#979797;
+	width:190px;
+}
+address,caption,cite,code,dfn,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+body {
+	background-color: #000;
+}
+.ie7 body{
+	overflow:hidden;
+}
+a{
+	color: #333;
+	text-decoration: none;
+}
+.container{
+	position: absolute;
+	display: table;
+	height: 35%;
+	width: 100%;
+	opacity: 0;
+}
+.clr{
+	clear: both;
+}
+.middle{
+	display: table-cell;
+	vertical-align: middle;
+}
+.content{
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+	text-align: center;
+}
+.content h1{
+	font-family: 'Lobster', cursive;
+	font-size: 96px;
+	line-height: 100px;
+	font-weight: 400;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    padding: 0px 0px 5px 0px;
+}
+.content h2{
+	font-family: 'Raleway', sans-serif;
+	font-size: 32px;
+	color: #f8f8f8;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+}
+
+.content table{
+    height: 60px;
+    width: 600px;
+}
+
+.iglink{
+	height: 60px;
+	width: 60px;
+	display: block;
+	background: transparent url('/images/instagram.png') center top no-repeat;
+}
+
+.iglink:hover{
+	background-image: url('/images/instagram-color.png');
+}
+.svbtlelink {
+	height: 60px;
+	width: 60px;
+	display: block;
+	background: transparent url('/images/svbtle.png') center top no-repeat;
+}
+
+.svbtlelink:hover{
+	background-image: url('/images/svbtle-fill.png');
+}
+.twitterlink{
+	height: 60px;
+	width: 60px;
+	display: block;
+	background: transparent url('/images/twitter.png') center top no-repeat;
+}
+
+.twitterlink:hover{
+	background-image: url('/images/twitter-blue.png');
+}
+.facebooklink{
+	height: 60px;
+	width: 60px;
+	display: block;
+	background: transparent url('/images/facebook.png') center top no-repeat;
+}
+
+.facebooklink:hover{
+	background-image: url('/images/facebook-blue.png');
+}
+/* Media Queries */
+@media screen and (max-width: 767px) {
+	.container > header{
+		text-align: center;
+	}
+}
