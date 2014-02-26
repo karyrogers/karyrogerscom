@@ -20,4 +20,4 @@ v1.1 wish list:
 - Animate social links separately
 - Add drop shadow for social link images
 - Animate the svbtle icon like a kudo
-- Determine a better way to select background images rather than the most recent 15
+- Change background to abitrary IG user or tag

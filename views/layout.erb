@@ -47,7 +47,6 @@
 	    bottom: 10px;
 	    left: 0px;
 	    width: 100%;
-	    text-align: center;
 	    opacity: 0;
 	    color: #fff;
 	    -webkit-animation: titleAnimation <%= total_time.to_i %>s linear infinite 0s;
@@ -56,7 +55,7 @@
 	    -ms-animation: titleAnimation <%= total_time.to_i %>s linear infinite 0s;
 	    animation: titleAnimation <%= total_time.to_i %>s linear infinite 0s; 
 	}
-	.cb-slideshow li div h3 { 
+	.cb-slideshow li div h3{ 
 	    font-family: 'Open Sans', 'Arial Narrow', Arial, sans-serif;
 	    font-size: 12px;
 	    font-weight: 600;
@@ -66,8 +65,7 @@
 	}
 	 <% count = 1 %>
 	 <% seconds = 0 %>
-	 <% @ig_feed.keys.each do |img_file| %>
-	   <% src = img_file.sub('public', '..') %>
+	 <% @ig_feed.keys.each do |src| %>
        <% if count == 1 %>
 	.cb-slideshow li:nth-child(1) span { 
 	    background-image: url(<%= src %>) 
@@ -96,13 +94,15 @@
 	/* Animation for the slideshow images */
     <% key_frame = (pic_count / total_time) * 100 %>
     <% first_key_frame = key_frame / 2 %>
+    <% last_key_frame = (100 / pic_count) + key_frame + first_key_frame %>
+    <% if last_key_frame > 100 then last_key_frame = 100 end %>
 	@-webkit-keyframes imageAnimation { 
 	    0% { opacity: 0;
 	    -webkit-animation-timing-function: ease-in; }
 	    <%= first_key_frame.to_i %>% { opacity: 1;
 	         -webkit-animation-timing-function: ease-out; }
 	    <%= key_frame.to_i %>% { opacity: 1 }
-	    25% { opacity: 0 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	@-moz-keyframes imageAnimation { 
@@ -111,7 +111,7 @@
 	    <%= first_key_frame.to_i %>% { opacity: 1;
 	         -moz-animation-timing-function: ease-out; }
 	    <%= key_frame.to_i %>% { opacity: 1 }
-	    25% { opacity: 0 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	@-o-keyframes imageAnimation { 
@@ -120,7 +120,7 @@
 	    <%= first_key_frame.to_i %>% { opacity: 1;
 	         -o-animation-timing-function: ease-out; }
 	    <%= key_frame.to_i %>% { opacity: 1 }
-	    25% { opacity: 0 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	@-ms-keyframes imageAnimation { 
@@ -129,7 +129,7 @@
 	    <%= first_key_frame.to_i %>% { opacity: 1;
 	         -ms-animation-timing-function: ease-out; }
 	    <%= key_frame.to_i %>% { opacity: 1 }
-	    25% { opacity: 0 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	@keyframes imageAnimation { 
@@ -138,43 +138,46 @@
 	    <%= first_key_frame.to_i %>% { opacity: 1;
 	         animation-timing-function: ease-out; }
 	    <%= key_frame.to_i %>% { opacity: 1 }
-	    25% { opacity: 0 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	/* Animation for the title */
+	<% first_key_frame += 2 %>
+	<% key_frame -= 1 %>
+	<% last_key_frame *= 0.6  %>
 	@-webkit-keyframes titleAnimation { 
 	    0% { opacity: 0 }
-	    7% { opacity: 1 }
-	    9% { opacity: 1 }
-	    11% { opacity: 0 }
+	    <%= first_key_frame.to_i %>% { opacity: 1 }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	@-moz-keyframes titleAnimation { 
 	    0% { opacity: 0 }
-	    7% { opacity: 1 }
-	    9% { opacity: 1 }
-	    11% { opacity: 0 }
+	    <%= first_key_frame.to_i %>% { opacity: 1 }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	@-o-keyframes titleAnimation { 
 	    0% { opacity: 0 }
-	    7% { opacity: 1 }
-	    9% { opacity: 1 }
-	    11% { opacity: 0 }
+	    <%= first_key_frame.to_i %>% { opacity: 1 }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	@-ms-keyframes titleAnimation { 
 	    0% { opacity: 0 }
-	    7% { opacity: 1 }
-	    9% { opacity: 1 }
-	    11% { opacity: 0 }
+	    <%= first_key_frame.to_i %>% { opacity: 1 }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	@keyframes titleAnimation { 
 	    0% { opacity: 0 }
-	    7% { opacity: 1 }
-	    9% { opacity: 1 }
-	    11% { opacity: 0 }
+	    <%= first_key_frame.to_i %>% { opacity: 1 }
+	    <%= key_frame.to_i %>% { opacity: 1 }
+	    <%= last_key_frame.to_i %>% { opacity: 0 }
 	    100% { opacity: 0 }
 	}
 	/* Show at least something when animations not supported */
@@ -182,7 +185,7 @@
 		opacity: 1;
 	}
 
-	@media screen and (max-width: 1136px) { 
+	/*@media screen and (max-width: 1136px) { 
 	    .cb-slideshow li div h3 { font-size: 8px }
 	}
 	@media screen and (max-width: 599px) { 
@@ -190,7 +193,7 @@
 		.cb-slideshow li div h2 { font-size: 12px }
 	    .cb-slideshow li div h3 { font-size: 8px }
 
-	}
+	}*/
     -->
     </style>
     <head>
