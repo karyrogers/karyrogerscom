@@ -9,7 +9,7 @@ Instagram.configure do |config|
 end
 
 get '/' do
-  results = Instagram.user_recent_media(545590)
+  results = Instagram.user_recent_media(XXXX)
   @ig_feed = Hash.new do |hash, key|
     hash[key] = {}
   end
