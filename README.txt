@@ -1,5 +1,7 @@
 karyrogers.com
 
+This Instagram API is deprecated and no longer works
+
 v1.0
 
 Uses Instagram ruby gem and Sinatra for IG background slideshow.
