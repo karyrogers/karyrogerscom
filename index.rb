@@ -4,8 +4,8 @@ require 'instagram'
 #set :bind, '0.0.0.0'
 
 Instagram.configure do |config|
-  config.client_id = "40bb9dee3fe547ed90c621b468db18c4"
-  config.client_secret = "df5f10e4c6a447039d04f0e5aaf081bb"
+  config.client_id = "XXXX"
+  config.client_secret = "XXXX"
 end
 
 get '/' do
