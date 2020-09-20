@@ -1,6 +1,6 @@
 karyrogers.com
 
-This Instagram API is deprecated and no longer works
+This Instagram API is deprecated and no longer works. The new Instagran Basic Display API is pretty much useless for my purposes :/
 
 v1.0
 
